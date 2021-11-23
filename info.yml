@@ -1,7 +1,14 @@
 ---
-- hosts: all
+- hosts: node1
   tasks:
-  - name: debug info
+  - name: debug system info
     debug:
       msg: "Remote host system information: {{ansible_facts}}"
+
+  - name: get the rpm package facts
+    package_facts:
+      manager: rpm
+
+  - name: list package info
+    debug: var=ansible_facts.packages
 
