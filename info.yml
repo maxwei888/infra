@@ -1,5 +1,5 @@
 ---
-- hosts: node1
+- hosts: all
   tasks:
   - name: debug system info
     debug:
