@@ -1,0 +1,12 @@
+---
+- name: Transfer and execute log4j check script.
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name:
+    copy:
+       src: /tmp/111.txt
+       dest: /tmp/1111111.1111
+       remote_src: false
+       mode: 0777
+
