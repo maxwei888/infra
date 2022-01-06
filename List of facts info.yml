@@ -18,7 +18,6 @@
         - "RAM[Mb]: {{ansible_memory_mb.real.total}}"
         - "Mem Usage[Mb]: {{ansible_memory_mb.real.used}}"
         - "Swap usage[Mb]: {{ansible_memory_mb.swap.used}}"
-        - "PhysDiskSize: sda({{ansible_devices.sda.size}}) sdb({{ansible_devices.sda.size}})"
         - "Number of Interfaces: {{ansible_interfaces}}"
         - "Timestamp: {{ansible_date_time.iso8601}}"
         - "Product Name: {{ansible_product_name}}"
