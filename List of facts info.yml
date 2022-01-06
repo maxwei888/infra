@@ -1,10 +1,10 @@
 ---
 - hosts: all
-  gather_facts: no
   tasks:
   - name: list of system info
     debug:
       msg:
+        - "Name: {{ansible_hostname}}"
         - "FQDN: {{ansible_fqdn}}"
         - "Main IP: {{ansible_default_ipv4.address}}"
         - "All ipv4 address: {{ansible_all_ipv4_addresses}}"
