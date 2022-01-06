@@ -1,0 +1,31 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+  - name: list of system info
+    debug:
+      msg:
+        - "Name: {{ansible_hostname}}"
+        - "FQDN: {{ansible_fqdn}}"
+        - "Main IP: {{ansible_default_ipv4.address}}"
+        - "All ipv4 address: {{ansible_all_ipv4_addresses}}"
+        - "All ipv6 address: {{ansible_all_ipv6_addresses}}"
+        - "OS: {{ansible_distribution}}({{ansible_distribution_version}})"
+        - "Kernel: {{ansible_kernel}}"
+        - "Architecture: {{ansible_userspace_architecture}}"
+        - "Virtualization: {{ansible_virtualization_role}}/{{ansible_virtualization_type}}"
+        - "CPU type: {{ansible_processor}}"
+        - "vCPUS: {{ansible_processor_vcpus}}"
+        - "RAM[Mb]: {{ansible_memory_mb.real.total}}"
+        - "Mem Usage[Mb]: {{ansible_memory_mb.real.used}}"
+        - "Swap usage[Mb]: {{ansible_memory_mb.swap.used}}"
+        - "PhysDiskSize: sda({{ansible_devices.sda.size}}) sdb({{ansible_devices.sda.size}})"
+        - "Number of Interfaces: {{ansible_interfaces}}"
+        - "Timestamp: {{ansible_date_time.iso8601}}"
+        - "Product Name: {{ansible_product_name}}"
+        - "Product Serial: {{ansible_product_serial}}"
+  - name: get service info
+    shell: ps -eo pid,comm,args,pcpu,rsz,vsz,stime,user,uid
+    register: ps
+  - name: list of service
+    debug: var=ps.stdout_lines
