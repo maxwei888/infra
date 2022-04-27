@@ -1,5 +1,5 @@
 ---
-- name: Transfer and execute log4j check script.
+- name: Transfer file to remote host
   hosts: all
   gather_facts: false
   tasks:
